@@ -19,12 +19,14 @@ class Main extends Component {
         ethBalance={this.props.ethBalance}
         tokenBalance={this.props.tokenBalance}
         buyTokens={this.props.buyTokens}
+        priceStable = {this.props.priceStable}
       />
     } else {
       content = <SellForm
         ethBalance={this.props.ethBalance}
         tokenBalance={this.props.tokenBalance}
         sellTokens={this.props.sellTokens}
+        priceStable = {this.props.priceStable}
       />
     }
 
