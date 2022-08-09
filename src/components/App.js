@@ -34,6 +34,8 @@ class App extends Component {
       loading: true,
       walletLoaded: false,
       txState : '',
+      price:'',
+      priceStable:'',
       web3Socket: {},
       ethSwapWebSocket: {},
       lastReceivedEvent: { 'Event' : 'no event'}      
@@ -86,6 +88,7 @@ class App extends Component {
 
   //Load EthSwap instance via infura webSocket API
   async loadEthSwapWebSocket(){
+    console.log(this.state.price)
     const URL = `wss://Bsc.infura.io/ws/v3/2596630cf90848f198341f6e1ba5a0bc/mainnet`
     let web3Socket = new Web3(new Web3.providers.WebsocketProvider(URL));
     
@@ -144,8 +147,15 @@ class App extends Component {
     // } else {
     //   window.alert('EthSwap contract not deployed to detected network.')
     // }    
-
-
+      const price = await ethSwap.methods.price().call();
+      // const totalSupply = await instance.methods.totalSupply().call();
+      // this.setState({ totalSupply: totalSupply });
+      this.setState({ price : price })
+      console.log("price is" , price);
+      const priceStable = await ethSwap.methods.priceStable().call();
+      this.setState({ priceStable : priceStable })
+      console.log("stableprice is" , priceStable);
+ 
 
     //load USDT 
     const usdt = new web3.eth.Contract(Usdt, "0x55d398326f99059fF775485246999027B3197955")
@@ -315,6 +325,8 @@ class App extends Component {
               tokenBalance={this.state.tokenBalance}
               buyTokens={this.buyTokens}
               sellTokens={this.sellTokens}
+              price = {this.state.price}
+              priceStable = {this.state.priceStable}
             />            
           </div>          
           {/* <div className="col-md-6" >
