@@ -288,16 +288,16 @@ class App extends Component {
         let txStatus;
         switch(this.state.txState){
           case 'onTxHash':
-            txStatus = 'Transaction Hash received from RinkeyBy  network...';
+            txStatus = 'Transaction Hash received from Blockchain  network...';
             break;
           case 'onConfirmation':
-            txStatus = 'Confirmation received from RinkeyBy network...';
+            txStatus = 'Confirmation received from Blockchain network...';
             break;
           case 'onReceipt':
-            txStatus = 'Tx receipt received from RinkeyBy network. See console logs...';
+            txStatus = 'Tx receipt received from Blockchain network. See console logs...';
             break;
           case 'onError':
-            txStatus = 'Tx error received from RinkeyBy network. Tx reverted...';
+            txStatus = 'Tx error received from Blockchain network. Tx reverted...';
             break;
           default :
             txStatus = '' ;
